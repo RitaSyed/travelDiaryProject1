@@ -48,8 +48,36 @@ const buildDomString = (places) => {
     domString +=    `<button class="card-button">Submit</button>`;
     domString += `</div>`;
   });
-  domString += `<div id="output">Hi</div>`;
+  // domString += `<div id="card-output">`;
+  // domString +=    `<h1>${place.title}</h1>`;
+  // domString +=     `<p ></p>`
+  // domString += `</div>`;
   // console.log(domString);
   PrintToDom(domString, "card-holder");
 }
 buildDomString (travelPlaces);
+const cardHolderDiv = document.getElementById("card-holder");
+const card  = document.getElementsByClassName("card");
+const input = document.getElementsByClassName("input");
+let output = document.getElementsByClassName("output");
+const allTheButtons = document.getElementsByClassName("card-button");
+
+cardHolderDiv.addEventListener("click", (e) => {
+  // let clicked = e.target;
+  if(e.target.className == "card-button"){
+    // cards =cardHolderDiv.children
+    let inp = e.target.previousElementSibling;
+    // let inp = input.e.target;
+    // output = input.value;
+    // console.log(input[0].value);
+    console.log(inp.value);
+  }
+  
+});
+
+
+// for (let i=0; i<allTheButtons.length; i++){
+//   allTheButtons[i].addEventListener('click', (e) => {
+//     console.log(input[0].value);
+//   });
+// }
