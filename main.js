@@ -55,16 +55,21 @@ const cardHolderDiv = document.getElementById("card-holder");
  cardHolderDiv.addEventListener("click", (e) => {
   if(e.target.className == "card-button"){
     let input = e.target.previousElementSibling.value;
-    let title = e.target.parentNode.firstElementChild.textContent;
-    buildCardOutput(input, title);
+    e.target.previousElementSibling.value="";
+    let time = new Date();
+    e.target.parentNode.firstElementChild.textContent;
+    buildCardOutput(input, title, time);
    } //close if statement
+ 
   });
 
-const buildCardOutput = (input, title) => {
+const buildCardOutput = (input, title, time) => {
   let string = "";
   string += `<div id="card-output">`;
   string +=    `<h2>${title}</h1>`;
   string +=    `<p>${input}</p>`;
+  string +=    `<p>${time}</p>`;
+  string +=     `<button class="delete-button">Delete</button>`;
   string += `</div>`;
   PrintToDom(string, "main-output");
 };
