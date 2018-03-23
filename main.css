@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+}
+
+h1.main-heading{
+  font-size: 55px;
+  padding-top: 4%;
+  padding-bottom: 1%;
+  text-align: center; 
+}
+
+/* diary cards */
+
+#card-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  /* padding: 2%; */
+  width: 30%;
+  border: 2px solid slategray;
+  text-align: center;
+  background-color: rgb(217, 236, 248);
+}
+
+h1{
+  font-size: 35px;
+  padding-top: 5%; 
+}
+
+h3{
+  font-size: 25px;
+}
+
+img{
+  max-width: 100%;
+  height: 600px;
+  padding: 5%;
+}
+
+.input{
+  margin: 5%;
+  font-size: 20px;
+}
+
+.card-button {
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 60px;
+  background-color: rgb(146, 196, 146);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* diary entry output */
+
+#card-output{
+  align-self: flex-end;
+  margin: 2%;
+  padding: 1%;
+  font-size: 25px;
+  border: 2px solid slategray;
+  background-color: rgb(217, 236, 248);
+}
+
+h2{
+  padding-bottom: 15px;
+}
+
+.delete-button {
+  background-color: rgb(219, 94, 94);
+  margin-top: 5px;
+  padding: 10px 20px;
+  font-size: 19px;
+}
+
+ 
