@@ -81,4 +81,11 @@ h2{
   padding-bottom: 15px;
 }
 
+.delete-button {
+  background-color: rgb(219, 94, 94);
+  margin-top: 5px;
+  padding: 10px 20px;
+  font-size: 19px;
+}
+
  

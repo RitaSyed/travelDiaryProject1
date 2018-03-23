@@ -1,4 +1,3 @@
-console.log("hi");
 const travelPlaces = [
     {
         title: "India",
@@ -57,10 +56,9 @@ const cardHolderDiv = document.getElementById("card-holder");
     let input = e.target.previousElementSibling.value;
     e.target.previousElementSibling.value="";
     let time = new Date();
-    e.target.parentNode.firstElementChild.textContent;
+    let title = e.target.parentNode.firstElementChild.textContent;
     buildCardOutput(input, title, time);
    } //close if statement
- 
   });
 
 const buildCardOutput = (input, title, time) => {
@@ -73,5 +71,14 @@ const buildCardOutput = (input, title, time) => {
   string += `</div>`;
   PrintToDom(string, "main-output");
 };
+
+const mainOutput = document.getElementById("main-output");
+ mainOutput.addEventListener("click", (e) => {
+  if(e.target.className == "delete-button"){
+    let cardOutput = e.target.parentNode;
+    mainOutput.removeChild(cardOutput);
+   } //close if statement
+  });
+
 
 buildDomString (travelPlaces);
