@@ -7,34 +7,34 @@ const travelPlaces = [
     },
     {
         title: "France",
-        img: "https://images.unsplash.com/photo-1460904041914-f2b315f93560?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=55e17befdf3cb41dd7243f1f01021ae2&auto=format&fit=crop&w=634&q=80",
+        img: "https://images.unsplash.com/photo-1460904041914-f2b315f93560?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=55e17befdf3cb41dd7243f1f01021ae2&auto=format&fit=crop&w=600&q=60",
         description: "Eiffel Tower"
     },
     {
-        title: "India",
-        img: "https://images.unsplash.com/photo-1515004207928-a22c7f92c249?ixlib=rb-0.3.5&s=6f77e988e98f56582d8d4182918c7d65&auto=format&fit=crop&w=709&q=80",
-        description: "Taj Mahal"
+        title: "Russia",
+        img: "https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fce300c2a97366451fee4528e72bf3dd&auto=format&fit=crop&w=687&q=80",
+        description: "Kremlin"
     },
     {
-        title: "India",
-        img: "https://images.unsplash.com/photo-1515004207928-a22c7f92c249?ixlib=rb-0.3.5&s=6f77e988e98f56582d8d4182918c7d65&auto=format&fit=crop&w=709&q=80",
-        description: "Taj Mahal"
+        title: "Egypt",
+        img: "http://destinationspoint.net/wp-content/uploads/2014/06/Pyramids-of-Giza-Egypt1.jpg",
+        description: "Egyptian pyramids"
     },
     {
-        title: "India",
-        img: "https://images.unsplash.com/photo-1515004207928-a22c7f92c249?ixlib=rb-0.3.5&s=6f77e988e98f56582d8d4182918c7d65&auto=format&fit=crop&w=709&q=80",
-        description: "Taj Mahal"
+        title: "USA Cities",
+        img: "https://blog.vegas.com/wp-content/uploads/2016/04/Welcome-to-Vegas.jpg",
+        description: "Las Vegas"
     },
    {
-        title: "India",
-        img: "https://images.unsplash.com/photo-1515004207928-a22c7f92c249?ixlib=rb-0.3.5&s=6f77e988e98f56582d8d4182918c7d65&auto=format&fit=crop&w=709&q=80",
-        description: "Taj Mahal"
+        title: "England",
+        img: "https://i.pinimg.com/originals/a6/73/28/a673285b9000c515972d9f5954d26283.jpg",
+        description: "The University of Cambridge"
     }
 ];
 
 const PrintToDom = (domString, divId) => {
   const PrintTo = document.getElementById(divId);
-  PrintTo.innerHTML = domString;
+  PrintTo.innerHTML += domString;
 };
 
 const buildDomString = (places) => {
@@ -44,40 +44,29 @@ const buildDomString = (places) => {
     domString +=    `<h1>${place.title}</h1>`;
     domString +=    `<img src="${place.img}" alt="">`;
     domString +=    `<h3>${place.description}</h3>`;
-    domString +=    `<textarea type="text" cols="20" rows="10" placeholder="type your text here" class="input"></textarea>`;
+    domString +=    `<textarea type="text" cols="40" rows="5" placeholder="type your text here" class="input"></textarea>`;
     domString +=    `<button class="card-button">Submit</button>`;
     domString += `</div>`;
   });
-  // domString += `<div id="card-output">`;
-  // domString +=    `<h1>${place.title}</h1>`;
-  // domString +=     `<p ></p>`
-  // domString += `</div>`;
-  // console.log(domString);
   PrintToDom(domString, "card-holder");
 }
-buildDomString (travelPlaces);
+
 const cardHolderDiv = document.getElementById("card-holder");
-const card  = document.getElementsByClassName("card");
-const input = document.getElementsByClassName("input");
-let output = document.getElementsByClassName("output");
-const allTheButtons = document.getElementsByClassName("card-button");
-
-cardHolderDiv.addEventListener("click", (e) => {
-  // let clicked = e.target;
+ cardHolderDiv.addEventListener("click", (e) => {
   if(e.target.className == "card-button"){
-    // cards =cardHolderDiv.children
-    let inp = e.target.previousElementSibling;
-    // let inp = input.e.target;
-    // output = input.value;
-    // console.log(input[0].value);
-    console.log(inp.value);
-  }
-  
-});
+    let input = e.target.previousElementSibling.value;
+    let title = e.target.parentNode.firstElementChild.textContent;
+    buildCardOutput(input, title);
+   } //close if statement
+  });
 
+const buildCardOutput = (input, title) => {
+  let string = "";
+  string += `<div id="card-output">`;
+  string +=    `<h2>${title}</h1>`;
+  string +=    `<p>${input}</p>`;
+  string += `</div>`;
+  PrintToDom(string, "main-output");
+};
 
-// for (let i=0; i<allTheButtons.length; i++){
-//   allTheButtons[i].addEventListener('click', (e) => {
-//     console.log(input[0].value);
-//   });
-// }
+buildDomString (travelPlaces);
