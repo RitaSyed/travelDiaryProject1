@@ -57,6 +57,8 @@ const cardHolderDiv = document.getElementById("card-holder");
     e.target.previousElementSibling.value="";
     let time = new Date();
     let title = e.target.parentNode.firstElementChild.textContent;
+    let card = e.target.parentNode;
+    card.style.background = "green";
     buildCardOutput(input, title, time);
    } //close if statement
   });
