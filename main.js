@@ -55,7 +55,7 @@ const cardHolderDiv = document.getElementById("card-holder");
   if(e.target.className == "card-button"){
     changeCardToGreen(e);
     buildCardOutput(e);
-   } //close if statement
+   }
   });
 
 const changeCardToGreen = (e) => {
@@ -66,7 +66,6 @@ const changeCardToGreen = (e) => {
       button.classList.add('gray');
   }
 };
-
 
 const buildCardOutput = (e) => {
   let input = e.target.previousElementSibling.value;
@@ -86,21 +85,38 @@ const buildCardOutput = (e) => {
 
 const mainOutput = document.getElementById("main-output");
  mainOutput.addEventListener("click", (e) => {
-   let cardOutput = e.target.parentNode;
   if(e.target.className == "delete-button"){
-    mainOutput.removeChild(cardOutput);
+    removesDiaryEntry(e);
    } //close if statement
+
    else if(e.target.className == "edit-button"){
-     let cardEntry = e.target.previousElementSibling.previousElementSibling;
-     let cardEntryText = e.target.previousElementSibling.previousElementSibling.innerHTML;
-     let editTextarea = document.createElement("textarea");
-     editTextarea.setAttribute('class', "edit-textarea");
-     editTextarea.setAttribute('cols', "60");
-     editTextarea.setAttribute('rows', "5");
-      editTextarea.value=cardEntryText;
-     cardOutput.replaceChild(editTextarea, cardEntry);
+    //  let cardEntry = e.target.previousElementSibling.previousElementSibling;
+    //  let cardEntryText = e.target.previousElementSibling.previousElementSibling.innerHTML;
+    //  let editTextarea = document.createElement("textarea");
+    //  editTextarea.setAttribute('class', "edit-textarea");
+    //  editTextarea.setAttribute('cols', "60");
+    //  editTextarea.setAttribute('rows', "5");
+    // editTextarea.value=cardEntryText;
+    //  cardOutput.replaceChild(editTextarea, cardEntry);
+    editDiaryEntry (e);
    }
   });
 
+const removesDiaryEntry = (e) => {
+  let cardOutput = e.target.parentNode;
+  mainOutput.removeChild(cardOutput);
+  }
+
+const editDiaryEntry = (e) => {
+  let cardOutput = e.target.parentNode;
+  let cardEntry = cardOutput.children[1];
+  let cardEntryText = cardEntry.innerHTML;
+  let editTextareEl = document.createElement("textarea");
+  editTextareEl.setAttribute('class', "edit-textarea");
+  editTextareEl.setAttribute('cols', "60");
+  editTextareEl.setAttribute('rows', "5");
+  editTextareEl.value=cardEntryText;
+  cardOutput.replaceChild(editTextareEl, cardEntry);
+}
 
 buildDomString (travelPlaces);
