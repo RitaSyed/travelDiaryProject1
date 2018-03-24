@@ -53,12 +53,8 @@ const buildDomString = (places) => {
 const cardHolderDiv = document.getElementById("card-holder");
  cardHolderDiv.addEventListener("click", (e) => {
   if(e.target.className == "card-button"){
-    let input = e.target.previousElementSibling.value;
-    e.target.previousElementSibling.value="";
-    let time = new Date();
-    let title = e.target.parentNode.firstElementChild.textContent; 
     changeCardToGreen(e);
-    buildCardOutput(input, title, time);
+    buildCardOutput(e);
    } //close if statement
   });
 
@@ -72,8 +68,11 @@ const changeCardToGreen = (e) => {
 };
 
 
-
-const buildCardOutput = (input, title, time) => {
+const buildCardOutput = (e) => {
+  let input = e.target.previousElementSibling.value;
+  e.target.previousElementSibling.value="";
+  let time = new Date();
+  let title = e.target.parentNode.firstElementChild.textContent;
   let string = "";
   string += `<div id="card-output">`;
   string +=    `<h2>${title}</h1>`;
