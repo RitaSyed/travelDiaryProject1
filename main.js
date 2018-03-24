@@ -50,13 +50,25 @@ const buildDomString = (places) => {
   PrintToDom(domString, "card-holder");
 }
 
-const cardHolderDiv = document.getElementById("card-holder");
- cardHolderDiv.addEventListener("click", (e) => {
-  if(e.target.className == "card-button"){
-    changeCardToGreen(e);
-    buildCardOutput(e);
-   }
-  });
+const addAllEventListeners = () =>{
+  const cardHolderDiv = document.getElementById("card-holder");
+  const mainOutput = document.getElementById("main-output");
+
+    cardHolderDiv.addEventListener("click", (e) => {
+      if(e.target.className == "card-button"){
+        changeCardToGreen(e);
+        buildCardOutput(e);
+       }
+    });
+    mainOutput.addEventListener("click", (e) => {
+      if(e.target.className == "delete-button"){
+        removesDiaryEntry(e, mainOutput);
+      } //close if statement
+        else if(e.target.className == "edit-button"){
+        editDiaryEntry(e);
+        }
+    });
+}
 
 const changeCardToGreen = (e) => {
   let card = e.target.parentNode;
@@ -83,26 +95,7 @@ const buildCardOutput = (e) => {
   PrintToDom(string, "main-output");
 };
 
-const mainOutput = document.getElementById("main-output");
- mainOutput.addEventListener("click", (e) => {
-  if(e.target.className == "delete-button"){
-    removesDiaryEntry(e);
-   } //close if statement
-
-   else if(e.target.className == "edit-button"){
-    //  let cardEntry = e.target.previousElementSibling.previousElementSibling;
-    //  let cardEntryText = e.target.previousElementSibling.previousElementSibling.innerHTML;
-    //  let editTextarea = document.createElement("textarea");
-    //  editTextarea.setAttribute('class', "edit-textarea");
-    //  editTextarea.setAttribute('cols', "60");
-    //  editTextarea.setAttribute('rows', "5");
-    // editTextarea.value=cardEntryText;
-    //  cardOutput.replaceChild(editTextarea, cardEntry);
-    editDiaryEntry (e);
-   }
-  });
-
-const removesDiaryEntry = (e) => {
+const removesDiaryEntry = (e, mainOutput) => {
   let cardOutput = e.target.parentNode;
   mainOutput.removeChild(cardOutput);
   }
@@ -119,4 +112,10 @@ const editDiaryEntry = (e) => {
   cardOutput.replaceChild(editTextareEl, cardEntry);
 }
 
-buildDomString (travelPlaces);
+const startApplication = () => {
+  buildDomString (travelPlaces);
+  addAllEventListeners();;
+};
+
+startApplication();
+
