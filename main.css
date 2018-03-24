@@ -65,6 +65,15 @@ img{
   font-size: 20px;
   font-weight: bold;
 }
+/* background colors */
+.green{
+  background-color: rgb(146, 196, 146);
+}
+
+.gray{
+  background-color: rgb(185, 184, 184);
+}
+
 
 /* diary entry output */
 

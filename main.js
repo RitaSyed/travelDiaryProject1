@@ -56,15 +56,22 @@ const cardHolderDiv = document.getElementById("card-holder");
     let input = e.target.previousElementSibling.value;
     e.target.previousElementSibling.value="";
     let time = new Date();
-    let title = e.target.parentNode.firstElementChild.textContent;
-    let card = e.target.parentNode;
-    card.style.background = "green";
-    if(card.style.background = "green"){
-      e.target.style.background = "slategray"
-    }
+    let title = e.target.parentNode.firstElementChild.textContent; 
+    changeCardToGreen(e);
     buildCardOutput(input, title, time);
    } //close if statement
   });
+
+const changeCardToGreen = (e) => {
+  let card = e.target.parentNode;
+  let button = e.target;
+  let cardColorGreen = card.classList.add('green');
+  if(!cardColorGreen){
+      button.classList.add('gray');
+  }
+};
+
+
 
 const buildCardOutput = (input, title, time) => {
   let string = "";
