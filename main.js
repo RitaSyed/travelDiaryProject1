@@ -70,8 +70,9 @@ const buildCardOutput = (input, title, time) => {
   let string = "";
   string += `<div id="card-output">`;
   string +=    `<h2>${title}</h1>`;
-  string +=    `<p>${input}</p>`;
+  string +=    `<p class="card-entry">${input}</p>`;
   string +=    `<p>${time}</p>`;
+  string +=     `<button class="edit-button">Edit</button>`;
   string +=     `<button class="delete-button">Delete</button>`;
   string += `</div>`;
   PrintToDom(string, "main-output");
@@ -79,10 +80,18 @@ const buildCardOutput = (input, title, time) => {
 
 const mainOutput = document.getElementById("main-output");
  mainOutput.addEventListener("click", (e) => {
+   let cardOutput = e.target.parentNode;
   if(e.target.className == "delete-button"){
-    let cardOutput = e.target.parentNode;
     mainOutput.removeChild(cardOutput);
    } //close if statement
+   else if(e.target.className == "edit-button"){
+     let cardEntry = e.target.previousElementSibling.previousElementSibling;
+     let cardEntryText = e.target.previousElementSibling.previousElementSibling.innerHTML;
+     let editTextarea = document.createElement("textarea", {class: 'edit-textarea'});
+      editTextarea.value=cardEntryText;
+     cardOutput.replaceChild(editTextarea, cardEntry);
+     let editTextareaClass = document.getElementsByClassName("edit-textarea");
+   }
   });
 
 
