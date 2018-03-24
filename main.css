@@ -81,11 +81,22 @@ h2{
   padding-bottom: 15px;
 }
 
-.delete-button {
-  background-color: rgb(219, 94, 94);
+.delete-button, .edit-button {
   margin-top: 5px;
+  margin-right: 15px;
   padding: 10px 20px;
   font-size: 19px;
 }
 
+.delete-button{
+  background-color: rgb(219, 94, 94);
+}
+
+.edit-button{
+  background-color: rgb(185, 184, 184);
+}
+
+.edit-textarea{
+  font-size: 19px;
+}
  

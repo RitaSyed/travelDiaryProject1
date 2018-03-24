@@ -87,10 +87,12 @@ const mainOutput = document.getElementById("main-output");
    else if(e.target.className == "edit-button"){
      let cardEntry = e.target.previousElementSibling.previousElementSibling;
      let cardEntryText = e.target.previousElementSibling.previousElementSibling.innerHTML;
-     let editTextarea = document.createElement("textarea", {class: 'edit-textarea'});
+     let editTextarea = document.createElement("textarea");
+     editTextarea.setAttribute('class', "edit-textarea");
+     editTextarea.setAttribute('cols', "60");
+     editTextarea.setAttribute('rows', "5");
       editTextarea.value=cardEntryText;
      cardOutput.replaceChild(editTextarea, cardEntry);
-     let editTextareaClass = document.getElementsByClassName("edit-textarea");
    }
   });
 
