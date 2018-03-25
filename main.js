@@ -53,14 +53,15 @@ const buildDomString = (places) => {
 }
 
 //adds event listeners for all the buttons on the page
-const addAllEventListeners = () =>{
+// const addAllEventListeners = () =>{
   const cardHolderDiv = document.getElementById("card-holder");
   const mainOutput = document.getElementById("main-output");
 
     cardHolderDiv.addEventListener("click", (e) => {
       if(e.target.className == "card-button"){
-        changeCardToGreen(e);
         buildCardOutput(e);
+        changeCardToGreen(e);
+        
        }
     });
     mainOutput.addEventListener("click", (e) => {
@@ -71,7 +72,7 @@ const addAllEventListeners = () =>{
         editDiaryEntry(e);
         }
     });
-}
+// }
 
 //changes card's background and button colors when clicked submit
 const changeCardToGreen = (e) => {
@@ -88,7 +89,6 @@ const timestamp = (e) => {
    let time = new Date();
    return time;
 }
-
 
 //builds diary card entries
 const buildCardOutput = (e) => {
@@ -125,10 +125,10 @@ const editDiaryEntry = (e) => {
   cardOutput.replaceChild(editTextareEl, cardEntry);
 }
 
-const startApplication = () => {
+// const startApplication = () => {
   buildDomString (travelPlaces);
-  addAllEventListeners();;
-};
+  // addAllEventListeners();;
+// };
 
-startApplication();
+// startApplication();
 
