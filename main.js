@@ -56,21 +56,20 @@ const buildDomString = (places) => {
 const addAllEventListeners = () =>{
   const cardHolderDiv = document.getElementById("card-holder");
   const mainOutput = document.getElementById("main-output");
-
-    cardHolderDiv.addEventListener("click", (e) => {
-      if(e.target.className == "card-button"){
-        changeCardToGreen(e);
-        buildCardOutput(e);
-       }
-    });
-    mainOutput.addEventListener("click", (e) => {
-      if(e.target.className == "delete-button"){
-        removesDiaryEntry(e, mainOutput);
-      } //close if statement
-        else if(e.target.className == "edit-button"){
-        editDiaryEntry(e);
-        }
-    });
+  cardHolderDiv.addEventListener("click", (e) => {
+    if(e.target.className == "card-button"){
+      buildCardOutput(e);     
+      changeCardToGreen (e);   
+    }
+  });
+  mainOutput.addEventListener("click", (e) => {
+    if(e.target.className == "delete-button"){
+      removesDiaryEntry(e, mainOutput);
+    } //close if statement
+      else if(e.target.className == "edit-button"){
+      editDiaryEntry(e);
+      }
+  });
 }
 
 //changes card's background and button colors when clicked submit
@@ -78,9 +77,6 @@ const changeCardToGreen = (e) => {
   let card = e.target.parentNode;
   let button = e.target;
   let cardColorGreen = card.classList.add('green');
-  if(!cardColorGreen){
-      button.classList.add('gray');
-  }
 };
 
 //shows date of each diary card entry
@@ -89,20 +85,19 @@ const timestamp = (e) => {
    return time;
 }
 
-
 //builds diary card entries
 const buildCardOutput = (e) => {
   let input = e.target.previousElementSibling.value;
   e.target.previousElementSibling.value="";
-  let title = e.target.parentNode.firstElementChild.textContent;
+  let title = e.target.parentNode.children[0].textContent;
   let string = "";
-  string += `<div id="card-output">`;
-  string +=    `<h2>${title}</h1>`;
-  string +=    `<p class="card-entry">${input}</p>`;
-  string +=    `<p>${timestamp()}</p>`;
-  string +=     `<button class="edit-button">Edit</button>`;
-  string +=     `<button class="delete-button">Delete</button>`;
-  string += `</div>`;
+    string += `<div id="card-output">`;
+    string +=    `<h2>${title}</h1>`;
+    string +=    `<p class="card-entry">${input}</p>`;
+    string +=    `<p>${timestamp()}</p>`;
+    string +=     `<button class="edit-button">Edit</button>`;
+    string +=     `<button class="delete-button">Delete</button>`;
+    string += `</div>`;
   PrintToDom(string, "main-output");
 };
 
@@ -127,7 +122,7 @@ const editDiaryEntry = (e) => {
 
 const startApplication = () => {
   buildDomString (travelPlaces);
-  addAllEventListeners();;
+  addAllEventListeners();
 };
 
 startApplication();
