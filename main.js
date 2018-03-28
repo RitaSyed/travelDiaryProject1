@@ -88,20 +88,19 @@ const timestamp = (e) => {
    return time;
 }
 
-
 //builds diary card entries
 const buildCardOutput = (e) => {
   let input = e.target.previousElementSibling.value;
   e.target.previousElementSibling.value="";
-  let title = e.target.parentNode.firstElementChild.textContent;
+  let title = e.target.parentNode.children[0].textContent;
   let string = "";
-  string += `<div id="card-output">`;
-  string +=    `<h2>${title}</h1>`;
-  string +=    `<p class="card-entry">${input}</p>`;
-  string +=    `<p>${timestamp()}</p>`;
-  string +=     `<button class="edit-button">Edit</button>`;
-  string +=     `<button class="delete-button">Delete</button>`;
-  string += `</div>`;
+    string += `<div id="card-output">`;
+    string +=    `<h2>${title}</h1>`;
+    string +=    `<p class="card-entry">${input}</p>`;
+    string +=    `<p>${timestamp()}</p>`;
+    string +=     `<button class="edit-button">Edit</button>`;
+    string +=     `<button class="delete-button">Delete</button>`;
+    string += `</div>`;
   PrintToDom(string, "main-output");
 };
 
@@ -124,7 +123,7 @@ const editDiaryEntry = (e) => {
 
 const startApplication = () => {
   buildDomString (travelPlaces);
-  addAllEventListeners();;
+  addAllEventListeners();
 };
 
 startApplication();
