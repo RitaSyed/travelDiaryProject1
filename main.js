@@ -45,7 +45,7 @@ const buildDomString = (places) => {
     domString +=    `<h1>${place.title}</h1>`;
     domString +=    `<img src="${place.img}" alt="">`;
     domString +=    `<h3>${place.description}</h3>`;
-    domString +=    `<textarea type="text" cols="40" rows="5" placeholder="diary entry" class="input"></textarea>`;
+    domString +=    `<textarea type="text" placeholder="diary entry" class="input"></textarea>`;
     domString +=    `<button class="card-button">Submit</button>`;
     domString += `</div>`;
   });
@@ -56,27 +56,30 @@ const buildDomString = (places) => {
 const addAllEventListeners = () =>{
   const cardHolderDiv = document.getElementById("card-holder");
   const mainOutput = document.getElementById("main-output");
-  cardHolderDiv.addEventListener("click", (e) => {
-    if(e.target.className == "card-button"){
-      buildCardOutput(e);     
-      changeCardToGreen (e);   
-    }
-  });
-  mainOutput.addEventListener("click", (e) => {
-    if(e.target.className == "delete-button"){
-      removesDiaryEntry(e, mainOutput);
-    } //close if statement
-      else if(e.target.className == "edit-button"){
-      editDiaryEntry(e);
-      }
-  });
+
+    cardHolderDiv.addEventListener("click", (e) => {
+      if(e.target.classList.contains("card-button")){
+        
+        buildCardOutput(e);
+        changeCardToGreen(e);
+       }
+    });
+    mainOutput.addEventListener("click", (e) => {
+      if(e.target.classList.contains("delete-button")){
+        removesDiaryEntry(e, mainOutput);
+      } //close if statement
+        else if(e.target.classList.contains("edit-button")){
+        editDiaryEntry(e);
+        }
+    });
 }
 
 //changes card's background and button colors when clicked submit
 const changeCardToGreen = (e) => {
-  let card = e.target.parentNode;
   let button = e.target;
-  let cardColorGreen = card.classList.add('green');
+  let card = button.parentNode;
+  card.classList.add('green');
+  button.classList.add('grey');
 };
 
 //shows date of each diary card entry
@@ -114,8 +117,6 @@ const editDiaryEntry = (e) => {
   let cardEntryText = cardEntry.innerHTML;
   let editTextareEl = document.createElement("textarea");
   editTextareEl.setAttribute('class', "edit-textarea");
-  editTextareEl.setAttribute('cols', "60");
-  editTextareEl.setAttribute('rows', "5");
   editTextareEl.value=cardEntryText;
   cardOutput.replaceChild(editTextareEl, cardEntry);
 }
