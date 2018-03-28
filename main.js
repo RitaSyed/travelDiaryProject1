@@ -45,7 +45,7 @@ const buildDomString = (places) => {
     domString +=    `<h1>${place.title}</h1>`;
     domString +=    `<img src="${place.img}" alt="">`;
     domString +=    `<h3>${place.description}</h3>`;
-    domString +=    `<textarea type="text" cols="40" rows="5" placeholder="diary entry" class="input"></textarea>`;
+    domString +=    `<textarea type="text" placeholder="diary entry" class="input"></textarea>`;
     domString +=    `<button class="card-button">Submit</button>`;
     domString += `</div>`;
   });
