@@ -46,16 +46,14 @@ h3{
 }
 
 img{
-  max-width: 90%;
   height: 500px;
   padding: 5%;
-  /* margin: auto; */
 }
 
 .input{
   margin: 5%;
   font-size: 20px;
-  width:90%;
+  width: 90%;
 }
 
 .card-button {
@@ -66,15 +64,14 @@ img{
   background-color: rgb(146, 196, 146);
   font-size: 20px;
   font-weight: bold;
-  border: 2px solid green;
 }
 
 /* background colors */
 .green{
-  background-color: rgb(204, 243, 204);
+  background-color: rgb(146, 196, 146);
 }
 
-.gray{
+.grey{
   background-color: rgb(185, 184, 184);
 }
 
@@ -112,5 +109,6 @@ h2{
 .edit-textarea{
   font-size: 19px;
   background-color: rgb(217, 236, 248);
+  width: 100%;
 }
  
